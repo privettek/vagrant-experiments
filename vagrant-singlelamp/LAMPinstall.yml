@@ -1,0 +1,14 @@
+---
+- hosts: dev
+  sudo: yes
+  tasks:
+    - name: Installs Apache
+      apt: pkg=apache2 state=installed update_cache=true
+    - name: Installs MySQL
+      apt: pkg=mysql-server state=installed update_cache=true
+    - name: Installs PHP
+      apt: pkg=php5 state=installed update_cache=true
+    - name: Installs PHP mod
+      apt: pkg=libapache2-mod-php5 state=installed update_cache=true
+    - name: Restart server
+      command: /etc/init.d/apache2 restart
