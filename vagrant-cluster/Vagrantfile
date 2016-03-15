@@ -1,43 +1,36 @@
-# Vagrantfile for vagrant-cluster
-
 
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
   config.vm.box = "hashicorp/precise64"
-	
-	config.vm.define :consulVM |consulVM|
-		consulVM.vm.hostname = "consulVM"
-		consulVM.vm.network "private_network", ip: "192.168.3.33"
-		consulVM.vm.provision "shell" do |s|
-#			s.path = "provision.sh"
-			s.args = ["consulVM", "N"]
-	end
 
+  config.vm.define :php do |php|
+    php.vm.hostname = "php"
+    php.vm.network "private_network", ip: "192.168.3.33"
+    php.vm.provision "shell" do |s|
+      s.path = "php.sh"
+      s.args = ["php", "N"]
+    end
+  end
 
-	config.vm.define :phpVM |phpVM|
-		phpVM.vm.hostname = "phpVM"
-		phpVM.vm.network "private_network", ip: "192.168.3.34"
-		phpVM.vm.provision "shell" do |s|
-#			s.path = "php.sh"
-			s.args = ["n1", "N"]
-	end
+  config.vm.define :mysql do |mysql|
+    mysql.vm.hostname = "mysql"
+    mysql.vm.network "private_network", ip: "192.168.3.34"
+    mysql.vm.network "forwarded_port", guest: 8500, host: 8501
+    mysql.vm.provision "shell" do |s|
+      s.path = "mysql.sh"
+      s.args = ["mysql", "Y"]
+    end
+  end
 
-
-	config.vm.define :mysqlVM |mysqlVM|
-		mysqlVM.vm.hostname = "mysqlVM"
-		mysqlVM.vm.network "private_network", ip: "192.168.3.35"
-		mysqlVM.vm.provision "shell" do |s|
-#			s.path = "mysql.sh"
-			s.args = ["mysqlVM", "N"]
-	end
-
-
+  config.vm.define :consul do |consul|
+    consul.vm.hostname = "consul"
+    consul.vm.network "private_network", ip: "192.168.2.35"
+    consul.vm.network "forwarded_port", guest: 8080, host: 8502
+    consul.vm.provision "shell" do |s|
+      s.path = "consul.sh"
+      s.args = ["consul", "Y"]
+    end
+  end
 end
-
-
-
-
-
-
-
