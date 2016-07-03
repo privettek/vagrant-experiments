@@ -28,7 +28,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Use this for OSGI Console
   config.vm.network :forwarded_port, guest: 8090, host: 8090
 
+  # Sync folders for local host machine development
+  config.vm.synced_folder "../data", "/vagrant_data"
+
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-    config.vm.network :private_network, ip: "192.168.33.10"
+  config.vm.network :private_network, ip: "192.168.33.10"
 end
