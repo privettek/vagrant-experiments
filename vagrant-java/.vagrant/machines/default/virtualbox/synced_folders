@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant_data":{"guestpath":"/vagrant_data","hostpath":"/Users/kwindus/Documents/fuckgit/vagrant-experiments/vagrant-java/data","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/kwindus/Documents/fuckgit/vagrant-experiments/vagrant-java","disabled":false,"__vagrantfile":true}}}
