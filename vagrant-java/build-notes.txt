@@ -1,7 +1,16 @@
 Build Notes for Vagrant Java Box
 
 
-REST, Spring, OSGi, JEE and similar frameworks and standards REST, Spring, OSGi, JEE and similar frameworks and standards web dev environment
+REST, Spring, OSGi, JEE and similar frameworks and standards REST, Spring, OSGi, JEE and similar frameworks and standards
+
+OSGi - will not add to box
+
+Spring - adding now
+
+JEE - Java Enterpriose...adds JSON and RESTful bindings, etc - Java EE 8
+http://www.oracle.com/technetwork/java/javaee/documentation/javaee7sdk-install-1957708.html
+
+web dev environment - done...add host files later
 
 
 

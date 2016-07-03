@@ -5,7 +5,7 @@ sudo cp /vagrant/env/hosts /etc/hosts
 sudo apt-get install python-software-properties
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo apt-get update
-sudo apt-get install oracle-java7-installer
+sudo apt-get install oracle-java8-installer
 
 # install mysql
 sudo echo mysql-server mysql-server/root_password password vagrant | debconf-set-selections
