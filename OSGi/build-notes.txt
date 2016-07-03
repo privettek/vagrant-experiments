@@ -1,0 +1,12 @@
+Build Notes for Vagrant Java Box
+
+
+REST, Spring, OSGi, JEE and similar frameworks and standards REST, Spring, OSGi, JEE and similar frameworks and standards
+sudo apt-get install openjdk-8-jre
+sudo apt-get install openjdk-8-jdk
+unzip
+wget  https://nexus.opendaylight.org/content/groups/public/org/opendaylight/integration/distribution-karaf/0.4.2-Beryllium-SR2/distribution-karaf-0.4.2-Beryllium-SR2.zip
+unzip distribution-karaf-0.4.2-Beryllium-SR2.zip
+cd distribution-karaf-0.4.2-Beryllium-SR2
+
+echo "export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64" >> ~/.bashrc
