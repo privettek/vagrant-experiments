@@ -1,7 +1,7 @@
 Build Notes for Vagrant Java Box
 
 
-REST, Spring, OSGi, JEE and similar frameworks and standards REST, Spring, OSGi, JEE and similar frameworks and standards
+REST, Spring, OSGi, JEE and similar frameworks and standards REST, Spring, OSGi, JEE and similar frameworks and standards web dev environment
 
 
 
