@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		consulVM.vm.hostname = "consulVM"
 		consulVM.vm.network "private_network", ip: "192.168.3.33"
 		consulVM.vm.provision "shell" do |s|
-#			s.path = "provision.sh"
+			s.path = "provision.sh"
 			s.args = ["consulVM", "N"]
 	end
 
@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		phpVM.vm.hostname = "phpVM"
 		phpVM.vm.network "private_network", ip: "192.168.3.34"
 		phpVM.vm.provision "shell" do |s|
-#			s.path = "php.sh"
+			s.path = "php.sh"
 			s.args = ["n1", "N"]
 	end
 
@@ -28,7 +28,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		mysqlVM.vm.hostname = "mysqlVM"
 		mysqlVM.vm.network "private_network", ip: "192.168.3.35"
 		mysqlVM.vm.provision "shell" do |s|
-#			s.path = "mysql.sh"
+			s.path = "mysql.sh"
 			s.args = ["mysqlVM", "N"]
 	end
 
