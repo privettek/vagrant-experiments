@@ -4,31 +4,43 @@ apt-get update
 
 apt-get install -y maven git openjdk-8-jre openjdk-8-jdk unzip
 
-export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
 
 ##Add to ~/.bashrc for persistence through a reboot##
 
 echo "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64" >> ~/.bashrc
-./run.sh -start 8090
+
 
 sudo apt-get update
 
-echo "Installing Apache.."
-sudo apt-get install -y apache2
+sudo cp /vagrant/env/hosts /etc/hosts
 
-echo "Installing Tomcat.."
+# install java
+sudo apt-get install python-software-properties
+sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
+
+# install mysql
+sudo echo mysql-server mysql-server/root_password password vagrant | debconf-set-selections
+sudo echo mysql-server mysql-server/root_password_again password vagrant | debconf-set-selections
+sudo apt-get install -y mysql-server
+
+# install tomcat
 sudo apt-get install -y tomcat8
+sudo rm -rf /var/lib/tomcat8/webapps/ROOT/
+sudo cp /vagrant/target/RewardHall.war /var/lib/tomcat8/webapps/ROOT.war
+sudo cp /vagrant/env/config/tomcat/server.xml /var/lib/tomcat8/conf/server.xml
+sudo usermod -G www-data tomcat
 
-echo "Installing Tomcat8 docs.."
-sudo apt-get install -y tomcat8-docs
+# install apache reverse proxy to tomcat
+sudo apt-get install -y apache2
+sudo a2enmod proxy proxy_http proxy_ajp
+sudo rm /etc/apache2/sites-enabled/000-default.conf
+sudo cp /vagrant/env/config/apache/rewardhall.conf /etc/apache2/sites-enabled/rewardhall.conf
 
-echo "Installing Tomcat8 examples.."
-sudo apt-get install -y tomcat8-examples
-
-echo "Installing Tomcat8 administration webapps.."
-sudo apt-get install -y tomcat8-admin
-
-service tomcat8 start
+sudo service tomcat8 restart
+sudo service apache2 restart
 
 
 

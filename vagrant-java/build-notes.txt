@@ -27,3 +27,5 @@ unzip distribution-karaf-0.4.2-Beryllium-SR2.zip
 cd distribution-karaf-0.4.2-Beryllium-SR2
 
 echo "export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64" >> ~/.bashrc
+
+https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-ubuntu-14-04
